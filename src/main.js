@@ -9,9 +9,11 @@ let mainWindow = null
 
 app.on('ready', _ => {
   mainWindow = new BrowserWindow({
-    width: 893,
-    height: 725,
-    resizable: false
+    //width: 893,
+    //height: 725,
+    width: 1280,
+    height: 800,
+    resizable: true
   })
 
   mainWindow.loadURL(`file://${__dirname}/capture.html`)

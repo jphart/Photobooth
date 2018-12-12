@@ -1,7 +1,7 @@
 const electron = require('electron')
 
 const countdown = require('./countdown')
-const effects = require('./effects')
+//const effects = require('./effects')
 const flash = require('./flash')
 const video = require('./video')
 
@@ -33,12 +33,12 @@ window.addEventListener('DOMContentLoaded', _ => {
   const photosEl = document.querySelector('.photosContainer')
   const counterEl = document.getElementById('counter')
   const flashEl = document.getElementById('flash')
-
+/*
   seriously = new Seriously()
   videoSrc = seriously.source('#video')
   canvasTarget = seriously.target('#canvas')
   effects.choose(seriously, videoSrc, canvasTarget)
-
+*/
   video.init(navigator, videoEl)
 
   recordEl.addEventListener('click', _ => {
@@ -71,6 +71,7 @@ ipc.on('image-removed', (evt, index) => {
   document.getElementById('photos').removeChild(Array.from(document.querySelectorAll('.photo'))[index])
 })
 
+/*
 ipc.on('effect-cycle', evt => {
   effects.cycle(seriously, videoSrc, canvasTarget)
 })
@@ -78,3 +79,4 @@ ipc.on('effect-cycle', evt => {
 ipc.on('effect-choose', (evt, effectName) => {
   effects.choose(seriously, videoSrc, canvasTarget, effectName)
 })
+*/

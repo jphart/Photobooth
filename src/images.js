@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const shell = require('electron').shell
 const spawn = require('child_process').spawn
+const pngToJpeg = require('png-to-jpeg');
 
 const logError = err => err && console.error(err)
 
@@ -10,11 +11,16 @@ let images = []
 exports.save = (picturesPath, contents, done) => {
   const base64Data = contents.replace(/^data:image\/png;base64,/, '')
   const imgPath = path.join(picturesPath, `${new Date().getTime()}.png`)
-  fs.writeFile(imgPath, base64Data, { encoding: 'base64' }, err => {
+
+  const imgPathJpg = path.join(picturesPath, `${new Date().getTime()}.jpg`)
+
+  fs.writeFileSync(imgPath, base64Data, { encoding: 'base64' }, err => {
     if (err) return logError(err)
 
     done(null, imgPath)
   })
+  let buffer = fs.readFileSync(imgPath);
+  pngToJpeg({quality: 90})(buffer).then(output => fs.writeFileSync(imgPathJpg, output));
 }
 
 exports.getPicturesDir = app => {

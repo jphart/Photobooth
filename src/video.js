@@ -4,8 +4,8 @@ const constraints = {
     mandatory: {
       minWidth: 853,
       minHeight: 480,
-      maxWidth: 853,
-      maxHeight: 480
+      maxWidth: 1280,
+      maxHeight: 800
     }
   }
 }
