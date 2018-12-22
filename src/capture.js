@@ -40,13 +40,17 @@ window.addEventListener('DOMContentLoaded', _ => {
   effects.choose(seriously, videoSrc, canvasTarget)
 */
   video.init(navigator, videoEl)
+  const ctx = canvasEl.getContext('2d');
+
 
   recordEl.addEventListener('click', _ => {
     countdown.start(counterEl, 3, _ => {
       flash(flashEl)
-      const bytes = video.captureBytesFromLiveCanvas(canvasEl)
+      //const bytes = video.captureBytesFromLiveCanvas(canvasEl)
+      const bytes = video.captureBytes(videoEl, ctx, canvasEl)
       ipc.send('image-captured', bytes)
       photosEl.appendChild(formatImgTag(document, bytes))
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
     })
   })
 

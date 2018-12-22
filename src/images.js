@@ -2,8 +2,16 @@ const fs = require('fs')
 const path = require('path')
 const shell = require('electron').shell
 const spawn = require('child_process').spawn
+
+/*
+To convert to png to jpeg
+Import:
 const pngToJpeg = require('png-to-jpeg');
 
+Then after writing out png:
+let buffer = fs.readFileSync(imgPath);
+pngToJpeg({quality: 90})(buffer).then(output => fs.writeFileSync(imgPathJpg, output));
+*/
 const logError = err => err && console.error(err)
 
 let images = []
@@ -11,16 +19,13 @@ let images = []
 exports.save = (picturesPath, contents, done) => {
   const base64Data = contents.replace(/^data:image\/png;base64,/, '')
   const imgPath = path.join(picturesPath, `${new Date().getTime()}.png`)
+  //const imgPathJpg = path.join(picturesPath, `${new Date().getTime()}.jpg`)
 
-  const imgPathJpg = path.join(picturesPath, `${new Date().getTime()}.jpg`)
-
-  fs.writeFileSync(imgPath, base64Data, { encoding: 'base64' }, err => {
+  fs.writeFile(imgPath, base64Data, { encoding: 'base64' }, err => {
     if (err) return logError(err)
-
+    console.log("saved: "+imgPath)
     done(null, imgPath)
   })
-  let buffer = fs.readFileSync(imgPath);
-  pngToJpeg({quality: 90})(buffer).then(output => fs.writeFileSync(imgPathJpg, output));
 }
 
 exports.getPicturesDir = app => {
@@ -37,6 +42,8 @@ exports.mkdir = picturesPath => {
 }
 
 exports.rm = (index, done) => {
+  console.log(index)
+  console.log(images[index])
   fs.unlink(images[index], err => {
     if(err) return logErr(err)
 
