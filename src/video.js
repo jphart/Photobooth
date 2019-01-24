@@ -30,6 +30,12 @@ exports.captureBytes = (videoEl, ctx, canvasEl) => {
   return canvasEl.toDataURL('image/png')
 }
 
+exports.captureBytes = (videoEl, ctx, canvasEl, imgOverlay) => {
+  ctx.drawImage(videoEl, 0, 0)
+  ctx.drawImage(imgOverlay, 0, 0)
+  return canvasEl.toDataURL('image/png')
+}
+
 exports.captureBytesFromLiveCanvas = canvas => {
   return canvas.toDataURL('image/png')
 }

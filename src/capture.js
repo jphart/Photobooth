@@ -42,12 +42,18 @@ window.addEventListener('DOMContentLoaded', _ => {
   video.init(navigator, videoEl)
   const ctx = canvasEl.getContext('2d');
 
+  var imageObj = new Image();
+  imageObj.onload = function() {
+    ctx.drawImage(imageObj, 0, 40);
+  };
+  imageObj.src = '../img/img_1.png';
+
 
   recordEl.addEventListener('click', _ => {
     countdown.start(counterEl, 3, _ => {
       flash(flashEl)
       //const bytes = video.captureBytesFromLiveCanvas(canvasEl)
-      const bytes = video.captureBytes(videoEl, ctx, canvasEl)
+      const bytes = video.captureBytes(videoEl, ctx, canvasEl, imageObj)
       ipc.send('image-captured', bytes)
       photosEl.appendChild(formatImgTag(document, bytes))
       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
