@@ -16,6 +16,8 @@ app.on('ready', _ => {
     resizable: true
   })
 
+  //mainWindow.webContents.openDevTools();
+
   mainWindow.loadURL(`file://${__dirname}/capture.html`)
 
   images.mkdir(images.getPicturesDir(app))

@@ -44,9 +44,10 @@ window.addEventListener('DOMContentLoaded', _ => {
 
   var imageObj = new Image();
   imageObj.onload = function() {
-    ctx.drawImage(imageObj, 0, 40);
+    ctx.drawImage(imageObj, 0, 0);
   };
-  imageObj.src = '../img/img_1.png';
+  imageObj.src = '../img/EJ.png';
+
 
 
   recordEl.addEventListener('click', _ => {

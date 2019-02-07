@@ -2,12 +2,14 @@ const constraints = {
   audio: false,
   video: {
     mandatory: {
-      minWidth: 853,
-      minHeight: 480,
+      //minWidth: 853,
+      //minHeight: 480,
       //maxWidth: 1280,
       //maxHeight: 800
-      maxWidth: 1920,
-      maxHeight: 1080
+      minWidth: 1280,
+      minHeight: 800,
+      maxWidth: 1280,
+      maxHeight: 800
     }
   }
 }

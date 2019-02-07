@@ -25,4 +25,3 @@ Could
 -----
 
 * Save as JPG rather than PNG
-*
