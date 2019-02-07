@@ -9,14 +9,15 @@ let mainWindow = null
 
 app.on('ready', _ => {
   mainWindow = new BrowserWindow({
-    //width: 893,
-    //height: 725,
     width: 1280,
     height: 800,
+
+    // For final build enable kiosk.
     resizable: true
+    //kiosk: true
   })
 
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL(`file://${__dirname}/capture.html`)
 
