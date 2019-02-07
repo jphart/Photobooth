@@ -11,6 +11,7 @@ Must
 
 * Switcher for backgrounds
 * Restore screen after photo taken
+* Save mirrored version
 
 Should
 ------
