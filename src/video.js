@@ -2,12 +2,14 @@ const constraints = {
   audio: false,
   video: {
     mandatory: {
-      minWidth: 853,
-      minHeight: 480,
+      //minWidth: 853,
+      //minHeight: 480,
       //maxWidth: 1280,
       //maxHeight: 800
-      maxWidth: 1920,
-      maxHeight: 1080
+      minWidth: 1280,
+      minHeight: 800,
+      maxWidth: 1280,
+      maxHeight: 800
     }
   }
 }
@@ -27,6 +29,22 @@ exports.init = (nav, videoEl) => {
 
 exports.captureBytes = (videoEl, ctx, canvasEl) => {
   ctx.drawImage(videoEl, 0, 0)
+  return canvasEl.toDataURL('image/png')
+}
+
+exports.captureBytes = (videoEl, ctx, canvasEl, imgOverlay) => {
+
+  //Mirror the video to match the css transform
+  ctx.translate(videoEl.width, 0);
+  ctx.scale(-1, 1);
+
+  ctx.drawImage(videoEl, 0, 0)
+
+  //Now flip back to add the overlay on top in the correct way.
+  ctx.translate(videoEl.width, 0);
+  ctx.scale(-1, 1);
+
+  ctx.drawImage(imgOverlay, 0, 0)
   return canvasEl.toDataURL('image/png')
 }
 

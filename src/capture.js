@@ -4,14 +4,15 @@ const countdown = require('./countdown')
 //const effects = require('./effects')
 const flash = require('./flash')
 const video = require('./video')
+const backgrounds = require('./backgrounds.js')
 
 const { ipcRenderer: ipc, shell, remote } = electron
 
 const images = remote.require('./images')
 
-let canvasTarget
-let seriously
-let videoSrc
+//let canvasTarget
+//let seriously
+//let videoSrc
 
 function formatImgTag(doc, bytes) {
   const div = doc.createElement('div')
@@ -33,6 +34,8 @@ window.addEventListener('DOMContentLoaded', _ => {
   const photosEl = document.querySelector('.photosContainer')
   const counterEl = document.getElementById('counter')
   const flashEl = document.getElementById('flash')
+  const previousEl = document.getElementById('previous')
+  const nextEl = document.getElementById('next')
 /*
   seriously = new Seriously()
   videoSrc = seriously.source('#video')
@@ -40,17 +43,36 @@ window.addEventListener('DOMContentLoaded', _ => {
   effects.choose(seriously, videoSrc, canvasTarget)
 */
   video.init(navigator, videoEl)
-  const ctx = canvasEl.getContext('2d');
+  const ctx = canvasEl.getContext('2d')
 
+  console.log("WIDTH: "+videoEl.width);
+  console.log("Height: "+videoEl.height);
+
+
+  //Initialise default background
+  backgrounds.restoreBackground(canvasEl);
+
+  previousEl.addEventListener('click', _ => {
+    console.log("Prev called")
+    backgrounds.prev(canvasEl)
+  })
+
+  nextEl.addEventListener('click', _ => {
+    console.log("Next called")
+    backgrounds.next(canvasEl)
+  })
 
   recordEl.addEventListener('click', _ => {
     countdown.start(counterEl, 3, _ => {
       flash(flashEl)
       //const bytes = video.captureBytesFromLiveCanvas(canvasEl)
-      const bytes = video.captureBytes(videoEl, ctx, canvasEl)
-      ipc.send('image-captured', bytes)
-      photosEl.appendChild(formatImgTag(document, bytes))
+      let imageObj = backgrounds.getBackgroundImage();
+      console.log("Got image")
+      const bytes = video.captureBytes(videoEl, ctx, canvasEl, imageObj);
+      ipc.send('image-captured', bytes);
+      photosEl.appendChild(formatImgTag(document, bytes));
       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+      backgrounds.restoreBackground(canvasEl);
     })
   })
 
