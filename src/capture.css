@@ -41,7 +41,7 @@ body {
   position: relative;
   */
   position: absolute;
-  left: 50%;
+  left: 40%;
   bottom: 50px;
   z-index: 112;
 }
@@ -61,6 +61,34 @@ body {
 .record[disabled] {
   background: linear-gradient(0deg, rgb(51, 51, 51), rgb(135, 114, 114));
 }
+
+.bg-switcher#previous {
+  height: 50px;
+  width: 5em;
+  background: linear-gradient(0deg, rgb(21, 129, 171), rgb(88, 146, 252));
+  border-radius: 10%%;
+  border: 5px solid #efefef;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bolder;
+  margin-right: 3em;
+}
+
+.bg-switcher#next {
+  height: 50px;
+  width: 5em;
+  background: linear-gradient(0deg, rgb(21, 129, 171), rgb(88, 146, 252));
+  border-radius: 10%;
+  border: 5px solid #efefef;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bolder;
+  margin-left: 3em;
+}
+
+
 .photosContainer {
   display: none;
   align-items: center;

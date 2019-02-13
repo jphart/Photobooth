@@ -33,7 +33,17 @@ exports.captureBytes = (videoEl, ctx, canvasEl) => {
 }
 
 exports.captureBytes = (videoEl, ctx, canvasEl, imgOverlay) => {
+
+  //Mirror the video to match the css transform
+  ctx.translate(videoEl.width, 0);
+  ctx.scale(-1, 1);
+
   ctx.drawImage(videoEl, 0, 0)
+
+  //Now flip back to add the overlay on top in the correct way.
+  ctx.translate(videoEl.width, 0);
+  ctx.scale(-1, 1);
+
   ctx.drawImage(imgOverlay, 0, 0)
   return canvasEl.toDataURL('image/png')
 }

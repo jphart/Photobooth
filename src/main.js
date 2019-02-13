@@ -11,9 +11,9 @@ app.on('ready', _ => {
   mainWindow = new BrowserWindow({
     width: 1280,
     height: 800,
-
+    useContentSize: true,
     // For final build enable kiosk.
-    resizable: true
+    resizable: true,
     //kiosk: true
   })
 

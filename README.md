@@ -9,9 +9,9 @@ Todo
 Must
 ----
 
-* Switcher for backgrounds
-* Restore screen after photo taken
-* Save mirrored version
+* Switcher for backgrounds - Done
+* Restore screen after photo taken - Done
+* Save mirrored version - Done
 
 Should
 ------
