@@ -34,12 +34,6 @@ body {
   left: 0px;*/
 }
 .recordContainer {
-  /*display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  position: relative;
-  */
   position: absolute;
   left: 40%;
   bottom: 50px;
@@ -66,7 +60,7 @@ body {
   height: 50px;
   width: 5em;
   background: linear-gradient(0deg, rgb(21, 129, 171), rgb(88, 146, 252));
-  border-radius: 10%%;
+  border-radius: 10%;
   border: 5px solid #efefef;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .4);
   cursor: pointer;
