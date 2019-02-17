@@ -27,7 +27,7 @@ exports.init = (nav, videoEl) => {
 
 exports.captureRawVideoBytes = (videoEl, ctx, canvasEl) => {
   ctx.drawImage(videoEl, 0, 0)
-  return canvasEl.toDataURL('image/png')
+  return canvasEl.toDataURL('image/jpeg',0.99)
 }
 
 exports.captureBytes = (videoEl, ctx, canvasEl, imgOverlay) => {
@@ -43,9 +43,9 @@ exports.captureBytes = (videoEl, ctx, canvasEl, imgOverlay) => {
   ctx.scale(-1, 1);
 
   ctx.drawImage(imgOverlay, 0, 0)
-  return canvasEl.toDataURL('image/png')
+  return canvasEl.toDataURL('image/jpeg',0.99)
 }
 
 exports.captureBytesFromLiveCanvas = canvas => {
-  return canvas.toDataURL('image/png')
+  return canvas.toDataURL('image/jpeg',1.0)
 }
