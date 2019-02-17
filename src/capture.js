@@ -27,6 +27,7 @@ function formatImgTag(doc, bytes) {
   return div
 }
 
+
 window.addEventListener('DOMContentLoaded', _ => {
   const videoEl = document.getElementById('video')
   const canvasEl = document.getElementById('canvas')
@@ -70,13 +71,17 @@ window.addEventListener('DOMContentLoaded', _ => {
       console.log("Got image")
       const bytes = video.captureBytes(videoEl, ctx, canvasEl, imageObj);
       ipc.send('image-captured', bytes);
-      photosEl.appendChild(formatImgTag(document, bytes));
+      //photosEl.appendChild(formatImgTag(document, bytes));
+
+
+      //Pause here for a second.
+
       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       backgrounds.restoreBackground(canvasEl);
     })
   })
 
-  photosEl.addEventListener('click', evt => {
+  /*photosEl.addEventListener('click', evt => {
     const isRm = evt.target.classList.contains('photoClose')
     const selector = isRm ? '.photoClose' : '.photoImg'
 
@@ -90,6 +95,7 @@ window.addEventListener('DOMContentLoaded', _ => {
         shell.showItemInFolder(images.getFromCache(index))
     }
   })
+  */
 
 })
 

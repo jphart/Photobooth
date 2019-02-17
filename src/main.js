@@ -34,7 +34,7 @@ app.on('ready', _ => {
 ipc.on('image-captured', (evt, contents) => {
   images.save(images.getPicturesDir(app), contents, (err, imgPath) => {
     console.log("ipc imagePath: "+imgPath)
-    images.cache(imgPath)
+    //images.cache(imgPath)
   })
 })
 
