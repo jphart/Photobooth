@@ -16,9 +16,10 @@ const logError = err => err && console.error(err)
 
 let images = []
 
-exports.save = (picturesPath, contents, done) => {
+exports.save = (picturesPath, prefix, contents, done) => {
   const base64Data = contents.replace(/^data:image\/png;base64,/, '')
-  const imgPath = path.join(picturesPath, `${new Date().getTime()}.png`)
+  const date = new Date();
+  const imgPath = path.join(picturesPath, `${prefix}-${date.getFullYear()}-${date.getMonth() +1}-${date.getDate()} ${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}-${date.getMilliseconds()}.png`)
   //const imgPathJpg = path.join(picturesPath, `${new Date().getTime()}.jpg`)
 
   fs.writeFile(imgPath, base64Data, { encoding: 'base64' }, err => {

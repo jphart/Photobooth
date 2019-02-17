@@ -31,10 +31,10 @@ app.on('ready', _ => {
   Menu.setApplicationMenu(menuContents)
 })
 
-ipc.on('image-captured', (evt, contents) => {
-  images.save(images.getPicturesDir(app), contents, (err, imgPath) => {
+ipc.on('image-captured', (evt, prefix, contents) => {
+  images.save(images.getPicturesDir(app), prefix, contents, (err, imgPath) => {
     console.log("ipc imagePath: "+imgPath)
-    images.cache(imgPath)
+    //images.cache(imgPath)
   })
 })
 

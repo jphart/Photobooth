@@ -27,6 +27,7 @@ function formatImgTag(doc, bytes) {
   return div
 }
 
+
 window.addEventListener('DOMContentLoaded', _ => {
   const videoEl = document.getElementById('video')
   const canvasEl = document.getElementById('canvas')
@@ -65,37 +66,28 @@ window.addEventListener('DOMContentLoaded', _ => {
   recordEl.addEventListener('click', _ => {
     countdown.start(counterEl, 3, _ => {
       flash(flashEl)
-      //const bytes = video.captureBytesFromLiveCanvas(canvasEl)
       let imageObj = backgrounds.getBackgroundImage();
       console.log("Got image")
+
+      const plainVideoBytes = video.captureRawVideoBytes(videoEl, ctx, canvasEl);
+      ipc.send('image-captured',"original", plainVideoBytes);
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
       const bytes = video.captureBytes(videoEl, ctx, canvasEl, imageObj);
-      ipc.send('image-captured', bytes);
-      photosEl.appendChild(formatImgTag(document, bytes));
+      ipc.send('image-captured',"background", bytes);
+
+
+      //Pause here for a second.
+
       ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
       backgrounds.restoreBackground(canvasEl);
     })
   })
-
-  photosEl.addEventListener('click', evt => {
-    const isRm = evt.target.classList.contains('photoClose')
-    const selector = isRm ? '.photoClose' : '.photoImg'
-
-    const photos = Array.from(document.querySelectorAll(selector))
-    const index = photos.findIndex(el => el == evt.target)
-
-    if (index > -1) {
-      if (isRm)
-        ipc.send('image-remove', index)
-      else
-        shell.showItemInFolder(images.getFromCache(index))
-    }
-  })
-
 })
 
-ipc.on('image-removed', (evt, index) => {
+/*ipc.on('image-removed', (evt, index) => {
   document.getElementById('photos').removeChild(Array.from(document.querySelectorAll('.photo'))[index])
-})
+})*/
 
 /*
 ipc.on('effect-cycle', evt => {
