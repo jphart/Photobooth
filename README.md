@@ -16,7 +16,7 @@ Must
 Should
 ------
 
-* Save original as well as with frame
+* Save original as well as with frame - Done
 * Mirror canvas is more natural - Done
 * Display picture for a few seconds after taking
 

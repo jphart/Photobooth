@@ -66,12 +66,15 @@ window.addEventListener('DOMContentLoaded', _ => {
   recordEl.addEventListener('click', _ => {
     countdown.start(counterEl, 3, _ => {
       flash(flashEl)
-      //const bytes = video.captureBytesFromLiveCanvas(canvasEl)
       let imageObj = backgrounds.getBackgroundImage();
       console.log("Got image")
+
+      const plainVideoBytes = video.captureRawVideoBytes(videoEl, ctx, canvasEl);
+      ipc.send('image-captured',"original", plainVideoBytes);
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
       const bytes = video.captureBytes(videoEl, ctx, canvasEl, imageObj);
-      ipc.send('image-captured', bytes);
-      //photosEl.appendChild(formatImgTag(document, bytes));
+      ipc.send('image-captured',"background", bytes);
 
 
       //Pause here for a second.

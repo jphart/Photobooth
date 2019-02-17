@@ -2,10 +2,10 @@ const constraints = {
   audio: false,
   video: {
     mandatory: {
-      minWidth: 853,
-      minHeight: 480,
-      //minWidth: 1280,
-      //minHeight: 800,
+      //minWidth: 853,
+      //minHeight: 480,
+      minWidth: 1280,
+      minHeight: 800,
       maxWidth: 1280,
       maxHeight: 800
     }
@@ -25,7 +25,7 @@ exports.init = (nav, videoEl) => {
   nav.getUserMedia(constraints, stream => handleSuccess(videoEl, stream), handleError)
 }
 
-exports.captureBytes = (videoEl, ctx, canvasEl) => {
+exports.captureRawVideoBytes = (videoEl, ctx, canvasEl) => {
   ctx.drawImage(videoEl, 0, 0)
   return canvasEl.toDataURL('image/png')
 }
