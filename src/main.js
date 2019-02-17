@@ -34,12 +34,5 @@ app.on('ready', _ => {
 ipc.on('image-captured', (evt, prefix, contents) => {
   images.save(images.getPicturesDir(app), prefix, contents, (err, imgPath) => {
     console.log("ipc imagePath: "+imgPath)
-    //images.cache(imgPath)
-  })
-})
-
-ipc.on('image-remove', (evt, index) => {
-  images.rm(index, _ => {
-    evt.sender.send('image-removed', index)
   })
 })

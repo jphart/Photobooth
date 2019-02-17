@@ -25,4 +25,4 @@ Should
 Could
 -----
 
-* Save as JPG rather than PNG
+* Save as JPG rather than PNG Done
