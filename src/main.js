@@ -12,12 +12,13 @@ app.on('ready', _ => {
     width: 1280,
     height: 800,
     useContentSize: true,
-    // For final build enable kiosk.
-    resizable: true,
-    //kiosk: true
+    // For final build enable kiosk & turn frame off
+    //resizable: true,
+    kiosk: true,
+    frame: false,
   })
 
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL(`file://${__dirname}/capture.html`)
 
@@ -27,8 +28,8 @@ app.on('ready', _ => {
     mainWindow = null
   })
 
-  const menuContents = Menu.buildFromTemplate(menuTemplate(mainWindow))
-  Menu.setApplicationMenu(menuContents)
+  //const menuContents = Menu.buildFromTemplate(menuTemplate(mainWindow))
+  //Menu.setApplicationMenu(menuContents)
 })
 
 ipc.on('image-captured', (evt, prefix, contents) => {
