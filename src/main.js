@@ -14,8 +14,8 @@ app.on('ready', _ => {
     useContentSize: true,
     // For final build enable kiosk & turn frame off
     //resizable: true,
-    kiosk: true,
-    frame: false,
+    //kiosk: true,
+    //frame: false,
   })
 
   //mainWindow.webContents.openDevTools();
