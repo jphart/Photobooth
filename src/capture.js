@@ -79,11 +79,19 @@ window.addEventListener('DOMContentLoaded', _ => {
 
       //Pause here for a second.
 
-      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-      backgrounds.restoreBackground(canvasEl);
+      setTimeout(() => {
+          ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+          backgrounds.restoreBackground(canvasEl);
+        },
+        4 * 1000
+      );
+
+
+
     })
   })
 })
+
 
 /*ipc.on('image-removed', (evt, index) => {
   document.getElementById('photos').removeChild(Array.from(document.querySelectorAll('.photo'))[index])
