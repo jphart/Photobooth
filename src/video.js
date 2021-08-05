@@ -2,8 +2,6 @@ const constraints = {
   audio: false,
   video: {
     mandatory: {
-      //minWidth: 853,
-      //minHeight: 480,
       minWidth: 1280,
       minHeight: 800,
       maxWidth: 1280,

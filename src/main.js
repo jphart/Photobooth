@@ -13,11 +13,12 @@ app.on('ready', _ => {
     height: 800,
     useContentSize: true,
     // For final build enable kiosk & turn frame off
-    //resizable: true,
-    kiosk: true,
-    frame: false,
+    resizable: false,
+    kiosk: false,
+    frame: true,
   })
 
+  //Open dev tools on startup - F12 otherwise
   //mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL(`file://${__dirname}/capture.html`)
