@@ -26,3 +26,24 @@ Could
 -----
 
 * Save as JPG rather than PNG Done
+
+
+
+Development
+===========
+
+Initial setup
+```sh
+$ npm install
+```
+
+To run
+```sh
+$ npm start
+```
+
+To package an executable
+
+```sh
+$ electron-bundler ./
+```
