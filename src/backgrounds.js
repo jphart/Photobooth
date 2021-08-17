@@ -1,29 +1,19 @@
 
 let backgrounds = [
                   "../img/blank.png",
+	          "../img/rocky.png",
+                  "../img/jungle.png",
                   "../img/jungle_background.png",
                   "../img/orangutang.png",
                   "../img/running.png",
                   "../img/medal_bg.png",
                   "../img/brock.png",
-                  "../img/Bride_and_groom.png",
                   "../img/Classic_Gold_Frame.png",
-                  "../img/emoticon.png",
-                  "../img/happily.png",
 				          "../img/microphone.png",
                   "../img/drumkit.png",
                   "../img/Trumpeter.png",
 				          "../img/stage_lights.png",
-                  "../img/theater-curtains.png",				  
-                  "../img/tinder.png",
-                  "../img/astronaut.png",
-                  "../img/underwater.png",
-                  "../img/giraffe.png",
-                  "../img/mario.png",
-                  "../img/Mona_Lisa.png",
-                  "../img/polaroid.png",
-				  "../img/bond.png",
-				  "../img/film.png",                  
+                  "../img/theater-curtains.png",			                 
 
                   ]
 let currentIndex = 0

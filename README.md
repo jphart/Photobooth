@@ -42,8 +42,14 @@ To run
 $ npm start
 ```
 
+
 To package an executable
 
 ```sh
 $ electron-bundler ./
 ```
+
+Package manager alternative
+npm install -g electron-packager --save-dev
+
+electron-packager ./ appName --platform=win32 --arch=x64 --electron-version=1.4.3
