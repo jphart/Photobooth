@@ -13,7 +13,14 @@ let backgrounds = [
                   "../img/drumkit.png",
                   "../img/Trumpeter.png",
 				          "../img/stage_lights.png",
-                  "../img/theater-curtains.png",			                 
+                  "../img/theater-curtains.png",	
+                  "../img/astronaut.png",
+                  "../img/underwater.png",
+                  "../img/giraffe.png",
+                  "../img/mario.png",
+                  "../img/polaroid.png",
+				  "../img/bond.png",
+				  "../img/film.png",     		                 
 
                   ]
 let currentIndex = 0
