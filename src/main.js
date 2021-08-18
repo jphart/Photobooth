@@ -14,8 +14,8 @@ app.on('ready', _ => {
     useContentSize: true,
     // For final build enable kiosk & turn frame off
     resizable: false,
-    kiosk: false,
-    frame: true,
+    kiosk: true,
+    frame: false,
   })
 
   //Open dev tools on startup - F12 otherwise

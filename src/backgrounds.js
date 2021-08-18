@@ -1,7 +1,7 @@
 
 let backgrounds = [
                   "../img/blank.png",
-	          "../img/rocky.png",
+	                "../img/rocky.png",
                   "../img/jungle.png",
                   "../img/jungle_background.png",
                   "../img/orangutang.png",
@@ -20,7 +20,8 @@ let backgrounds = [
                   "../img/mario.png",
                   "../img/polaroid.png",
 				  "../img/bond.png",
-				  "../img/film.png",     		                 
+				  "../img/film.png",
+          "../img/olympics.png",     		                 
 
                   ]
 let currentIndex = 0
