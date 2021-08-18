@@ -21,6 +21,7 @@ let backgrounds = [
                   "../img/polaroid.png",
 				  "../img/bond.png",
 				  "../img/film.png",
+          "../img/olympics.png",
 
                   ]
 let currentIndex = 0
